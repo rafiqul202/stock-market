@@ -31,7 +31,7 @@ const SignInPage = () => {
         <InputField
           name="email"
           label="Email"
-          placeholder="contact@jsmastery.com"
+          placeholder="contact121@gmail.com"
           register={register}
           error={errors.email}
           validation={{

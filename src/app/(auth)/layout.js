@@ -1,9 +1,8 @@
-import Header from "@/components/ui/Header";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const layout = ({ children }) => {
+const layout =  ({ children }) => {
   return (
     <main className="auth-layout">
       <section className="auth-left-section scrollbar-hide-default">
