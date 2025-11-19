@@ -12,12 +12,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
-const UseDropdownMenu = () => {
+const UseDropdownMenu = ({user}) => {
   const router = useRouter();
   const handleSignOut = async () => {
     router.push("/sign-in");
   };
-  const user = { name: "John", email: "jhon@gmail.com" };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { connectToDatabase } from "../../../database/mongoose";
 
-const layout =  ({ children }) => {
+const layout = async ({ children }) => {
+  await connectToDatabase();
   return (
     <main className="auth-layout">
       <section className="auth-left-section scrollbar-hide-default">
