@@ -2,9 +2,13 @@
 import FooterLinks from "@/components/forms/FooterLinks";
 import InputField from "@/components/forms/InputField";
 import { Button } from "@/components/ui/button";
+import { signInWithEmail } from "@/lib/action/auth.action";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const SignInPage = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,9 +23,14 @@ const SignInPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
+      const result = await signInWithEmail(data);
+      if (result.success) {
+        router.push("/");
+        toast.success("Sign-in sussfull");
+      }
     } catch (error) {
       console.log(error);
+      toast.error("some thing was wrong sign-up");
     }
   };
   return (
