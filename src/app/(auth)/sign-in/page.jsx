@@ -30,7 +30,7 @@ const SignInPage = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("some thing was wrong sign-up");
+      toast.error("some thing was wrong sign-in", error.status);
     }
   };
   return (

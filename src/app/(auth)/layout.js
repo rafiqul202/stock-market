@@ -1,10 +1,14 @@
+import { auth } from "@/lib/betterAuth/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
-import { connectToDatabase } from "../../../database/mongoose";
 
 const layout = async ({ children }) => {
-  await connectToDatabase();
+  const session = await auth.api.getSession({ headers: await headers() });
+  // console.log("user login session", session);
+  if (session?.user) redirect("/");
   return (
     <main className="auth-layout">
       <section className="auth-left-section scrollbar-hide-default">
