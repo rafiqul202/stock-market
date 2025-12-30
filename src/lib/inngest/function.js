@@ -105,7 +105,7 @@ export const sendDailyNewsSummery = inngest.createFunction(
       await Promise.all(
         userNewsSummaries.map(async ({ user, newsContent }) => {
           if (!newsContent) return false;
-          return await sendNewsSummaryEmail({email:user.email,date:formatDateToday,newsContent})
+          return await sendNewsSummaryEmail({email:user.email,date:formatDateToday(),newsContent})
         })
       )
 
