@@ -55,7 +55,7 @@ export const sendDailyNewsSummery = inngest.createFunction(
     const users = await step.run('get-all-users', getAllUsersForNewsEmail);
     if(!users && users.email === 0) return {success:false,message:'No User Fount for News email'}
     // step-2 for each user, get watchlist symbols -> fetch news
-    const result = step.run('fetch-user-news', async () => {
+    const results = step.run('fetch-user-news', async () => {
       let perUser = [];
       for (const user of users) {
         try {
@@ -78,7 +78,7 @@ export const sendDailyNewsSummery = inngest.createFunction(
     })
     // step-3  summarize these news via ai for each user
     const userNewsSummaries = [];
-    for (const { user, articles } of result) {
+    for (const { user, articles } of results) {
        try {
         const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace(
           "{{newsData}}",

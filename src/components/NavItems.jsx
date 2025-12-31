@@ -3,6 +3,7 @@ import { NAV_ITEMS } from "@/lib/Constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import SearchCommand from "./SearchCommand";
 
 const NavItems = () => {
   const pathName = usePathname();
@@ -14,7 +15,15 @@ const NavItems = () => {
     <ul className="flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium">
       {NAV_ITEMS.map(({ href, label }) => {
         if (href === "/search") {
-          return <li key="search-trigger"> SearchSection</li>;
+          return (
+            <li key="search-trigger">
+              <SearchCommand
+                renderAs="text"
+                label="Search"
+                initialStocks={[{symbol:"TST",name:"TEST",exchange:"NASDAQ",type:"TYPE"}]}
+              />
+            </li>
+          );
         }
         return (
           <li key={href}>
