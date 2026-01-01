@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import SearchCommand from "./SearchCommand";
 
-const NavItems = () => {
+const NavItems = ({ initialStocks }) => {
   const pathName = usePathname();
   const isActive = (href) => {
     if (pathName === "/") return pathName === "/";
@@ -20,7 +20,7 @@ const NavItems = () => {
               <SearchCommand
                 renderAs="text"
                 label="Search"
-                initialStocks={[{symbol:"TST",name:"TEST",exchange:"NASDAQ",type:"TYPE"}]}
+                initialStocks={initialStocks}
               />
             </li>
           );
